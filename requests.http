@@ -1,0 +1,86 @@
+# Список всех объявлений
+GET http://localhost:8000/advertisement/
+
+
+########################################
+# Добавление объявления
+
+### Тип 1
+POST http://localhost:8000/advertisement/
+Content-Type: application/json
+Authorization: Token 66caafa8db5921d51ff7352984dd69e6ec820742
+
+{
+  "title": "Шкаф IKEA",
+  "description": "Срочно"
+}
+
+### Тип 2
+POST http://localhost:8000/advertisement/
+Content-Type: application/json
+Authorization: Token 4fb07cbf0fb1ffae5e59f5ca874bd5586493bdcb
+
+{
+  "title": "ТВ Samsung",
+  "description": "Почти работает"
+}
+
+
+########################################
+# Удаление объявления
+DELETE http://localhost:8000/advertisement/39/
+Authorization: Token 66caafa8db5921d51ff7352984dd69e6ec820742
+
+########################################
+# Получение объявления по ID
+GET http://localhost:8000/advertisement/38/
+
+
+
+########################################
+# Изменение объявления по ID
+PATCH http://localhost:8000/advertisement/38/
+Content-Type: application/json
+Authorization: Token 66caafa8db5921d51ff7352984dd69e6ec820742
+
+{
+  "status": "CLOSED"
+}
+
+
+########################################
+# Поиск по title
+GET http://localhost:8000/advertisement/?search=samsung&ordering=-created_at
+Content-Type: application/json
+
+########################################
+# фильтрация по создателю
+GET http://localhost:8000/advertisement/?creator=2
+Content-Type: application/json
+
+
+########################################
+# фильтрация по дате
+### Тип 1
+GET http://localhost:8000/advertisement/?created_at=2023-10-04
+Content-Type: application/json
+
+
+### Тип 2
+GET http://localhost:8000/advertisement/?created_at_before=2023-10-05
+Content-Type: application/json
+
+
+########################################
+# фильтрация по статусу
+GET http://localhost:8000/advertisement/?status=CLOSED
+Content-Type: application/json
+
+
+
+########################################
+
+Admin1
+Authorization: Token 66caafa8db5921d51ff7352984dd69e6ec820742
+Admin2
+Authorization: Token 4fb07cbf0fb1ffae5e59f5ca874bd5586493bdcb

@@ -1,18 +1,19 @@
-from django_filters import rest_framework as filters, DateFromToRangeFilter, DateTimeFilter
+from django_filters import rest_framework as filters, DateFromToRangeFilter, DateTimeFilter, ChoiceFilter
 
-from advertisements.models import Advertisement
+from advertisements.models import Advertisement, AdvertisementStatusChoices
 
 
 class AdvertisementFilter(filters.FilterSet):
     """Фильтры для объявлений."""
 
-    # TODO: задайте требуемые фильтры
-    created_at = DateTimeFilter(field_name='created_at',
-                                       lookup_expr='gte')
+    """ Фильтрация по дате  _after & _before"""
+    created_at = DateFromToRangeFilter()
+    updated_at = DateFromToRangeFilter()
 
-    created_at_before = DateFromToRangeFilter(field_name='created_at')
+    # фильтрация по дате
+    status = ChoiceFilter(choices=AdvertisementStatusChoices.choices)
 
     class Meta:
         model = Advertisement
-        fields = ['createdAt']
-
+        # поля, по которым можно осуществлять фильтрацию
+        fields = ['created_at', 'updated_at', 'creator', 'status']

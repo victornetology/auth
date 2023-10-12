@@ -28,18 +28,18 @@ Authorization: Token 4fb07cbf0fb1ffae5e59f5ca874bd5586493bdcb
 
 ########################################
 # Удаление объявления
-DELETE http://localhost:8000/advertisement/39/
+DELETE http://localhost:8000/advertisement/43/
 Authorization: Token 66caafa8db5921d51ff7352984dd69e6ec820742
 
 ########################################
 # Получение объявления по ID
-GET http://localhost:8000/advertisement/38/
+GET http://localhost:8000/advertisement/44/
 
 
 
 ########################################
 # Изменение объявления по ID
-PATCH http://localhost:8000/advertisement/38/
+PATCH http://localhost:8000/advertisement/45/
 Content-Type: application/json
 Authorization: Token 66caafa8db5921d51ff7352984dd69e6ec820742
 
@@ -55,14 +55,14 @@ Content-Type: application/json
 
 ########################################
 # фильтрация по создателю
-GET http://localhost:8000/advertisement/?creator=2
+GET http://localhost:8000/advertisement/?creator=1
 Content-Type: application/json
 
 
 ########################################
 # фильтрация по дате
 ### Тип 1
-GET http://localhost:8000/advertisement/?created_at=2023-10-04
+GET http://localhost:8000/advertisement/?created_at_after=2023-10-06
 Content-Type: application/json
 
 
